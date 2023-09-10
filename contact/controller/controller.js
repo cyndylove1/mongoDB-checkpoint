@@ -35,7 +35,7 @@ const updateContact = async(async( req ,res)=>{
         throw new Error('contact not found')
     }
 
-        const updatedcontact = await contactlist.updateOne({ _id :("64f969f1a26926d6ebc0dad2") }, { $set: { firstname: "Kefi Anis" } })
+        const updatedcontact = await contactlist.updateOne({ _id :("64fe232adbf864951601ab9d") }, { $set: { firstname: "Kefi Anis" } })
     res.status(200).json(updatedcontact)
     
         
