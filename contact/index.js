@@ -11,7 +11,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended : false}))
 
-app.use('/contact/contactlist', require('./route/route'))
+app.use('/person/personlist', require('./route/route'))
 
 
 app.listen(PORT , ()=>{

@@ -1,57 +1,60 @@
 const async = require('express-async-handler')
-const contactlist = require('../model/schema')
+const personlist = require('../model/schema')
 
 
-const getContact = async(async(req,res)=>{
-    const contact = await contactlist.find()
+const getPerson = async(async(req,res)=>{
+    
+    const person = await personlist.find()
 
-    res.status(200).json(contact)
+    res.status(200).json(person)
+    
+    
 
 });
-const postContact = async(async(req, res)=>{
-    if(!req.body.lastname, !req.body.firstname, !req.body.email && !req.body.age){
+const postPerson = async(async(req, res)=>{
+    if(!req.body.name, !req.body.age && !req.body.favouritefoods){
         res.status(400)
         throw new Error('please add a content')
 
     }
 
-    const contact = await contactlist.create({
-        lastname:req.body.lastname,
-        firstname:req.body.firstname,
-        email:req.body.email,
-        age:req.body.age
+    const person = await personlist.create({
+        name:req.body.name,
+        age:req.body.age,
+        favouritefoods:req.body.favouritefoods,
+        
 
     
     })
-    res.status(200).json(contact)
+    res.status(200).json(person)
    
 });
-const updateContact = async(async( req ,res)=>{
-    const contact = await contactlist.findById(req.params.id)
-
+const updatePerson = async(async( req ,res)=>{
+    const person = await personlist.findById(req.params.id)
+ 
     
-    if(!contact){
+    if(!person){
         res.status(400)
-        throw new Error('contact not found')
+        throw new Error('person not found')
     }
 
-        const updatedcontact = await contactlist.updateOne({ _id :("64fe232adbf864951601ab9d") }, { $set: { firstname: "Kefi Anis" } })
-    res.status(200).json(updatedcontact)
+        const updatedPerson = await personlist.findOneAndUpdate({ _id :("65021837fbff55004fff6137") }, { $set: { age: 20 } })
+    res.status(200).json(updatedPerson)
     
         
         
 });
-const deleteContact = async(async( req ,res)=>{
-    const contact = await contactlist.findByIdAndRemove(req.params.id)
+const deletePerson = async(async( req ,res)=>{
+    const person = await personlist.findByIdAndRemove(req.params.id)
 
     
-    if(!contact){
+    if(!person){
         res.status(400)
-        throw new Error('contact not found')
+        throw new Error('person not found')
     }
-    await contactlist.deleteMany({ age: { $lt: 5 } })
+    await personlist.remove({_id:("650215656567aa807adface3")})
     res.status(200).json({id:req.params.id})
 });
 module.exports = {
-    getContact,postContact,updateContact, deleteContact
+    getPerson,postPerson,updatePerson, deletePerson
 }

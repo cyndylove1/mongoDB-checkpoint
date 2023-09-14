@@ -2,30 +2,27 @@ const mongoose = require('mongoose')
 
 
 const conschema = mongoose.Schema({
-  lastname:{
+  name:{
     type: String,
     required:[true, 'please add a text value']
 
   } ,
-  firstname:{
+  age:{
     type: String,
     required:[true, 'please add a text value']
 
 } ,
-  email: {
+  favouritefoods: {
     type: String,
     required:[true, 'please add a text value']
   },
 
-  age: {
-    type: Number,
-    required:[true, 'please add a number value']
-  }
+  
 },{
     timestamps: true,
            
 });
-module.exports = mongoose.model('contactlist', conschema)
+module.exports = mongoose.model('personlist', conschema)
       
       
 

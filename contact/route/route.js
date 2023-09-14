@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const {getContact, postContact, updateContact, deleteContact} = require('../controller/controller')
+const {getPerson, postPerson, updatePerson, deletePerson} = require('../controller/controller')
 
-router.get('/', getContact)
-router.post('/', postContact)
-router.put('/:id', updateContact)
-router.delete('/:id',deleteContact)
+router.get('/', getPerson)
+router.post('/', postPerson)
+router.put('/:id', updatePerson)
+router.delete('/:id',deletePerson)
 
 module.exports = router
